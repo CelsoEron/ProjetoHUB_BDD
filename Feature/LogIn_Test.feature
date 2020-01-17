@@ -1,13 +1,10 @@
-Feature: Login Action
+Feature: Register Action
 
-Scenario: Successful Login with Valid Credentials
+Scenario: Sucessful Register with Valid Data
 	Given User is on Home Page
-	When User Navigate to LogIn Page
-	And User enters Credentials to LogIn
+	When User Navigate to Register Page
+	And User enters Data to Register Page
 	| Username | Password |
     	| CelsoEron | Test1234 |
-    Then Message displayed Login Successfully
+    Then Message displayed Register Successfully
     
-Scenario: Sucessful LogOut
-	When User LogOut from the Application
-	Then Message displayed LogOut Sucessfully
