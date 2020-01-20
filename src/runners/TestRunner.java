@@ -1,4 +1,4 @@
-package cucumberTest;
+package runners;
 
 import org.junit.runner.RunWith;
 
@@ -6,12 +6,11 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(
-		features = "Feature"
-		,glue = "stepDefinition",
-//		dryRun = true
-		monochrome = true)
+@CucumberOptions(features = "Feature", glue = "stepDefinition"
+//		,dryRun = true
+//		,monochrome = true
+//		, tags = { "@SmokeTest" }
+)
 
 public class TestRunner {
-
 }

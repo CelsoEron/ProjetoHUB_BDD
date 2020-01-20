@@ -11,71 +11,74 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import pageObjects.HomePage;
+import pageObjects.RegisterPage;
 
 public class Test_Steps {
-	private static WebDriver driver;
+	WebDriver driver;
+	HomePage home;
+	RegisterPage registerPage;
 
 	@Given("^User is on Home Page$")
 	public void user_is_on_Home_Page() {
 		driver = new ChromeDriver();
+		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get("http://advantageonlineshopping.com/");
 	}
 
 	@When("^User Navigate to Register Page$")
 	public void user_Navigate_to_Register_Page() throws Exception {
-		driver.findElement(By.id("menuUserLink")).click();
-		WebElement createAcc = driver.findElement(By.xpath("/html/body/login-modal/div/div/div[3]/a[2]"));
+		home = new HomePage(driver);
 
-		WebDriverWait wait = new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions.elementToBeClickable(createAcc));
+		home.clickMenuUser();
+		home.clickCreateAccount(driver);
 
-		JavascriptExecutor executor = (JavascriptExecutor) driver;
-		executor.executeScript("arguments[0].click();", createAcc);
-	}
-	
-	@When("^User enters \"(.*)\" and \"(.*)\"$")
-	public void user_enters_UserName_and_Password(String username, String password) {
-		driver.findElement(By.name("usernameRegisterPage")).sendKeys(username);
-		driver.findElement(By.name("passwordRegisterPage")).sendKeys(password);
 	}
 
-//	@When("^User enters Data to Register$")
-//	public void user_enters_Data_to_LogIn() {
-//		driver.findElement(By.name("usernameRegisterPage")).sendKeys("eronCelso");
-//		driver.findElement(By.name("passwordRegisterPage")).sendKeys("Test1234");
-//		driver.findElement(By.name("confirm_passwordRegisterPage")).sendKeys("Test1234");
-//		driver.findElement(By.name("emailRegisterPage")).sendKeys("celso.silva@rsinet.com.br");
-//		driver.findElement(By.name("first_nameRegisterPage")).sendKeys("Celso Eron");
-//		driver.findElement(By.name("last_nameRegisterPage")).sendKeys("de Almeida Silva");
-//		driver.findElement(By.name("phone_numberRegisterPage")).sendKeys("11996980807");
-//		Select oSelect = new Select(driver.findElement(By.className("countryListBoxRegisterPage")));
-//		oSelect.selectByVisibleText("Brasil");
-//		driver.findElement(By.name("cityRegisterPage")).sendKeys("Cotia");
-//		driver.findElement(By.name("addressRegisterPage")).sendKeys("R Maria Catarina");
-//		driver.findElement(By.name("state_/_province_/_regionRegisterPage")).sendKeys("SP");
-//		driver.findElement(By.name("postal_codeRegisterPage")).sendKeys("06727182");
-//		driver.findElement(By.id("i_agree")).click();
-//
-//	}
+	@When("^User enters Account Details$")
+	public void user_enters_Account_Details(String userName, String email, String password, String confirmPassword) {
 
-	@Then("^Message displayed Login Successfully$")
-	public void message_displayed_Login_Successfully() {
-		System.out.println("Registro efetuado com sucesso !");
+		registerPage.enterUsername(userName);
+		registerPage.enterPassword(password);
+		registerPage.enterConfirmPassword(confirmPassword);
+		registerPage.enterEmail(email);
 	}
 
-	@When("^User LogOut from the Application$")
-	public void user_LogOut_from_the_Application() {
-		driver.findElement(By.id("menuUser")).click();
-		driver.findElement(By.xpath("//*[@id=\"loginMiniTitle\"]/label[3]")).click();
+	@And("^User enters Personal Details$")
+	public void user_enters_Personal_Details(String firstName, String lastName, String phone) {
+		registerPage = new RegisterPage(driver);
+
+		registerPage.enterFirstName(firstName);
+		registerPage.enterLastName(lastName);
+		registerPage.enterPhone(phone);
+	}
+
+	@And("^User enters Address$")
+	public void user_enters_Address(String country, String city, String address, String state, String postal) {
+		registerPage = new RegisterPage(driver);
+
+		registerPage.enterCountry(country);
+		registerPage.enterCity(city);
+		registerPage.enterAddress(address);
+		registerPage.enterState(state);
+		registerPage.enterPostal(postal);
+	}
+
+	@When("^Agree the Terms$")
+	public void agree_the_Terms() throws Throwable {
+		registerPage = new RegisterPage(driver);
+
+		registerPage.clickAgree(true);
 	}
 
 	@Then("^Message displayed Register Successfully$")
-	public void message_displayed_LogOut_Sucessfully() {
-		System.out.println("LogOut efetuado com sucesso !");
+	public void message_displayed_Register_Sucessfully() {
+		System.out.println("Registro efetuado com sucesso");
 		driver.close();
 	}
 }
