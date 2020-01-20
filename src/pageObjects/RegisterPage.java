@@ -110,9 +110,16 @@ public class RegisterPage {
 		enterEmail("celsoautomation@test.com");
 		enterPassword("Test1234");
 		enterConfirmPassword("Test1234");
+	}
+
+	public void fillPersonalDetails() {
 		enterFirstName("Automation");
 		enterLastName("Test");
 		enterPhone("1122334455");
+	}
+
+	public void fillAddress() {
+
 		enterCountry("Brasil");
 		enterCity("São Paulo");
 		enterAddress("Rua Teste");
