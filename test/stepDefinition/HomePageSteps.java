@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import cucumber.TestContext;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pageObjects.HomePage;
 
@@ -40,4 +41,8 @@ public class HomePageSteps {
 		home.clickInvalidProduct();
 	}
 
+	@Then("^Message displayed Product chosen is different$")
+	public void message_displayed_Product_chosen_is_different() {
+		
+	}
 }
