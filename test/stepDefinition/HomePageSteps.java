@@ -1,6 +1,5 @@
 package stepDefinition;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import cucumber.TestContext;
@@ -28,4 +27,5 @@ public class HomePageSteps {
 		home.clickMenuUser();
 		home.clickCreateAccount(driver);
 	}
+
 }

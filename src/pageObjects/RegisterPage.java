@@ -35,7 +35,7 @@ public class RegisterPage {
 	private WebElement bxPhone;
 
 	@FindBy(how = How.NAME, using = "countryListboxRegisterPage")
-	private Select bxCountry;
+	private WebElement bxCountry;
 
 	@FindBy(how = How.NAME, using = "cityRegisterPage")
 	private WebElement bxCity;
@@ -51,6 +51,9 @@ public class RegisterPage {
 
 	@FindBy(how = How.NAME, using = "i_agree")
 	private WebElement chkAgree;
+
+	@FindBy(how = How.ID, using = "register_btnundefined")
+	private WebElement btnRegister;
 
 	public void enterUsername(String userName) {
 		bxUsername.sendKeys(userName);
@@ -81,7 +84,8 @@ public class RegisterPage {
 	}
 
 	public void enterCountry(String country) {
-		bxCountry.selectByVisibleText(country);
+		Select selectCountry = new Select(bxCountry);
+		selectCountry.selectByVisibleText(country);
 	}
 
 	public void enterCity(String city) {
@@ -105,6 +109,11 @@ public class RegisterPage {
 			chkAgree.click();
 	}
 
+	public void clickBtnRegister(boolean value) {
+		if (value)
+			btnRegister.click();
+	}
+
 	public void fill_RegisterDetails() {
 		enterUsername("Automation");
 		enterEmail("celsoautomation@test.com");
@@ -120,10 +129,10 @@ public class RegisterPage {
 
 	public void fillAddress() {
 
-		enterCountry("Brasil");
 		enterCity("São Paulo");
 		enterAddress("Rua Teste");
 		enterPostal("123456");
 		enterState("São Paulo");
+		enterCountry("Brazil");
 	}
 }

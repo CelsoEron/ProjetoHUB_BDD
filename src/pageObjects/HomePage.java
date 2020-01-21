@@ -1,6 +1,7 @@
 package pageObjects;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -27,7 +28,7 @@ public class HomePage {
 	private WebElement btnUser;
 
 	@FindBy(how = How.XPATH, using = "/html/body/login-modal/div/div/div[3]/a[2]")
-	public static WebElement lnkCreate;
+	private WebElement lnkCreate;
 
 	public void enterHome() {
 		driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
@@ -38,8 +39,7 @@ public class HomePage {
 	}
 
 	public void clickCreateAccount(WebDriver driver) {
-		JavascriptExecutor executor = (JavascriptExecutor) driver;
-		executor.executeScript("arguments[0].click();", lnkCreate);
+		lnkCreate.sendKeys(Keys.ENTER);
 	}
 
 }
