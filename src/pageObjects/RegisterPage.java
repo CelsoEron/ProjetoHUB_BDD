@@ -114,7 +114,14 @@ public class RegisterPage {
 			btnRegister.click();
 	}
 
-	public void fill_RegisterDetails() {
+	public void fill_AccountDetails() {
+		enterUsername("Automation1");
+		enterEmail("celsoautomation@test.com");
+		enterPassword("Test1234");
+		enterConfirmPassword("Test1234");
+	}
+	
+	public void fill_InvalidAccountDetails() {
 		enterUsername("Automation");
 		enterEmail("celsoautomation@test.com");
 		enterPassword("Test1234");
