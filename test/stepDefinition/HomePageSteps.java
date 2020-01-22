@@ -45,4 +45,16 @@ public class HomePageSteps {
 	public void message_displayed_Product_chosen_is_different() {
 		
 	}
+	
+	@When("^User click and input valid Search$")
+	public void user_click_and_input_valid_Search() {
+		home.clickBtnSearch();
+		home.fillBoxSearch();
+	}
+	
+	 @When("^User click and input invalid Search$")
+	 public void user_click_and_input_invalid_Search() {
+		 home.clickBtnSearch();
+		 home.fillBoxInvalidSearch();
+	 }
 }

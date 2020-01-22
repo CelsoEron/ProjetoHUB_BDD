@@ -1,6 +1,7 @@
 package pageObjects;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -12,6 +13,7 @@ import dataProviders.ConfigFileReader;
 import managers.FileReaderManager;
 
 public class HomePage {
+	
 	WebDriver driver;
 	ConfigFileReader configFileReader;
 
@@ -33,6 +35,12 @@ public class HomePage {
 
 	@FindBy(how = How.XPATH, using = "//*[@id=\"details_10\"]")
 	private WebElement invalidProduct;
+	
+	@FindBy(how = How.ID, using = "menuSearch")
+	private WebElement btnSearch;
+	
+	@FindBy(how = How.ID, using = "autoComplete")
+	private WebElement boxSearch;
 
 	public void enterHome() {
 		driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
@@ -57,5 +65,28 @@ public class HomePage {
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", invalidProduct);
 	}
-
+	
+	public void clickBtnSearch() {
+		btnSearch.click();
+	}
+	
+	public void enterProduct(String product) {
+		boxSearch.sendKeys(product);
+		boxSearch.sendKeys(Keys.ENTER);
+	}
+	
+	public void enterInvalidProduct(String invalidProduct) {
+		boxSearch.sendKeys(invalidProduct);
+		boxSearch.sendKeys(Keys.ENTER);
+	}
+	
+	public void fillBoxSearch() {
+		
+		enterProduct("Laptop");
+	}
+	
+	public void fillBoxInvalidSearch() {
+		
+		enterInvalidProduct("iPhone");
+	}
 }
