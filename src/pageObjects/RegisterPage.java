@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,8 +9,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class RegisterPage {
+	
+	WebDriver driver;
 
 	public RegisterPage(WebDriver driver) {
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
@@ -113,6 +117,11 @@ public class RegisterPage {
 		if (value)
 			btnRegister.click();
 	}
+	
+	public void rollDown() {
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("window.scrollBy(0,100)");
+	}
 
 	public void fill_AccountDetails() {
 		enterUsername("Automation1");
@@ -120,7 +129,7 @@ public class RegisterPage {
 		enterPassword("Test1234");
 		enterConfirmPassword("Test1234");
 	}
-	
+
 	public void fill_InvalidAccountDetails() {
 		enterUsername("Automation");
 		enterEmail("celsoautomation@test.com");

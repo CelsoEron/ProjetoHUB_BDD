@@ -41,6 +41,20 @@ public class Wait {
 	public static void until(WebDriver driver, Function<WebDriver, Boolean> waitCondition) {
 		until(driver, waitCondition, FileReaderManager.getInstance().getConfigReader().getImplicitlyWait());
 	}
+	
+	public static void waitForPageLoad(WebDriver driver) {
+
+		WebDriverWait webDriverWait = new WebDriverWait(driver, 10);
+	    webDriverWait.until(new Function<WebDriver, Boolean>() {
+	        public Boolean apply(WebDriver driver) {
+	            System.out.println("Current Window State       : "
+	                + String.valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState")));
+	            return String
+	                .valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState"))
+	                .equals("complete");
+	        }
+	    });
+	}
 
 	private static void until(WebDriver driver, Function<WebDriver, Boolean> waitCondition, Long timeoutInSeconds) {
 		WebDriverWait webDriverWait = new WebDriverWait(driver, timeoutInSeconds);

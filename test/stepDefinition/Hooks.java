@@ -36,7 +36,10 @@ public class Hooks {
 
 	@After(order = 1)
 	public void afterScenario(Scenario scenario) throws IOException, InterruptedException {
+		Wait.waitForPageLoad(driver);
+		Wait.untilJqueryIsDone(driver);
 		Wait.untilPageLoadComplete(driver);
+		
 		String screenshotName = scenario.getName().replaceAll(" ", "_");
 		File sourcePath = ((TakesScreenshot) testContext.getWebDriverManager().getDriver())
 				.getScreenshotAs(OutputType.FILE);

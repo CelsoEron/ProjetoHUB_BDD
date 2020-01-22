@@ -35,6 +35,7 @@ public class ProductPage {
 	@FindBy(how = How.XPATH, using = "//*[@id=\"searchPage\"]/div[3]/div/label/span")
 	private WebElement messageNotFound;
 
+
 	public void close_Search() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.urlContains("Laptop"));
@@ -47,7 +48,8 @@ public class ProductPage {
 	}
 
 	public void clickTxtProduct() {
-		lnkTxtProduct.click();
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", lnkTxtProduct);
 	}
 
 	public void checkTxtProduct() {
@@ -57,4 +59,5 @@ public class ProductPage {
 	public void checkNotFound() {
 		assertEquals(messageNotFound.getText().contains("No results for"), true);
 	}
+
 }

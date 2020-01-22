@@ -50,6 +50,6 @@ public class RegisterPageSteps {
 	
 	@Then("^Message displayed Register Failed$")
 	public void message_displayed_Register_Failed() {
-		
+		registerPage.rollDown();
 	}
 }

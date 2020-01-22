@@ -5,9 +5,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import cucumber.TestContext;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pageObjects.HomePage;
+import pageObjects.ProductPage;
 
 public class HomePageSteps {
 	HomePage home;
@@ -37,24 +37,20 @@ public class HomePageSteps {
 	}
 
 	@When("^User click in Invalid Product chosen$")
-	public void user_click_in_Invalid_Product_chosen() {
+	public void user_click_in_Invalid_Product_chosen() throws InterruptedException {
 		home.clickInvalidProduct();
+		home.waitElement();
 	}
 
-	@Then("^Message displayed Product chosen is different$")
-	public void message_displayed_Product_chosen_is_different() {
-		
-	}
-	
 	@When("^User click and input valid Search$")
 	public void user_click_and_input_valid_Search() {
 		home.clickBtnSearch();
 		home.fillBoxSearch();
 	}
-	
-	 @When("^User click and input invalid Search$")
-	 public void user_click_and_input_invalid_Search() {
-		 home.clickBtnSearch();
-		 home.fillBoxInvalidSearch();
-	 }
+
+	@When("^User click and input invalid Search$")
+	public void user_click_and_input_invalid_Search() {
+		home.clickBtnSearch();
+		home.fillBoxInvalidSearch();
+	}
 }
