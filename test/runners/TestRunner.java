@@ -16,8 +16,8 @@ import managers.FileReaderManager;
 		"com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html" }
 
 //		,dryRun = true
-//		,monochrome = true
-		, tags = { "@InvalidClickSearch" })
+		, monochrome = true)
+//		, tags = { "@InvalidClickSearch" })
 
 public class TestRunner {
 	@AfterClass

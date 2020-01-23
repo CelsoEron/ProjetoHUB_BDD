@@ -11,18 +11,16 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import dataProviders.ConfigFileReader;
 import managers.FileReaderManager;
+import selenium.Data;
 
 public class HomePage {
 
 	WebDriver driver;
-	ConfigFileReader configFileReader;
 
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-		configFileReader = new ConfigFileReader();
 	}
 
 	@FindBy(how = How.ID, using = "menuUser")
@@ -84,14 +82,14 @@ public class HomePage {
 		boxSearch.sendKeys(Keys.ENTER);
 	}
 
-	public void fillBoxSearch() {
+	public void fillBoxSearch() throws Exception {
 
-		enterProduct("Laptop");
+		enterProduct(Data.nameLaptop());
 	}
 
-	public void fillBoxInvalidSearch() {
+	public void fillBoxInvalidSearch() throws Exception {
 
-		enterInvalidProduct("iPhone");
+		enterInvalidProduct(Data.nameInvalid());
 	}
 
 	public void waitElement() {

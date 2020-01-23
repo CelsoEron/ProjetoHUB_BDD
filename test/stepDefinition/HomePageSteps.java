@@ -7,7 +7,8 @@ import cucumber.TestContext;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import pageObjects.HomePage;
-import pageObjects.ProductPage;
+import selenium.Constant;
+import selenium.ExcelUtils;
 
 public class HomePageSteps {
 	HomePage home;
@@ -15,9 +16,10 @@ public class HomePageSteps {
 	WebDriverWait wait;
 	TestContext testContext;
 
-	public HomePageSteps(TestContext context) {
+	public HomePageSteps(TestContext context) throws Exception {
 		testContext = context;
 		home = testContext.getPageObjectManager().getHomePage();
+		ExcelUtils.setProdutosFile(Constant.Path_TestData + Constant.File_TestData, "Produtos");
 	}
 
 	@Given("^User is on Home Page$")
@@ -43,14 +45,15 @@ public class HomePageSteps {
 	}
 
 	@When("^User click and input valid Search$")
-	public void user_click_and_input_valid_Search() {
+	public void user_click_and_input_valid_Search() throws Exception {
 		home.clickBtnSearch();
 		home.fillBoxSearch();
 	}
 
 	@When("^User click and input invalid Search$")
-	public void user_click_and_input_invalid_Search() {
+	public void user_click_and_input_invalid_Search() throws Exception {
 		home.clickBtnSearch();
 		home.fillBoxInvalidSearch();
+
 	}
 }

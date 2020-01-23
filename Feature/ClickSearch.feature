@@ -6,7 +6,6 @@ Feature: Click Search Action
     And User click in Product chosen
     Then Message displayed Search with Clicks Successfully
 
-@InvalidClickSearch
   Scenario: Failed Search with Clicks
     Given User is on Home Page
     When User click in Invalid Product chosen
