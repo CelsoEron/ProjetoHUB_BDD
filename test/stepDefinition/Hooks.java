@@ -15,6 +15,7 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import managers.WebDriverManager;
+import runners.TestRunner;
 import selenium.Wait;
 
 public class Hooks {
@@ -39,12 +40,11 @@ public class Hooks {
 		Wait.waitForPageLoad(driver);
 		Wait.untilJqueryIsDone(driver);
 		Wait.untilPageLoadComplete(driver);
-		
+
 		String screenshotName = scenario.getName().replaceAll(" ", "_");
 		File sourcePath = ((TakesScreenshot) testContext.getWebDriverManager().getDriver())
 				.getScreenshotAs(OutputType.FILE);
-		File destinationPath = new File(
-				System.getProperty("user.dir") + "/target/cucumber-reports/screenshots/" + screenshotName + ".png");
+		File destinationPath = new File(TestRunner.folderPath + "/" + screenshotName + ".png");
 
 		Files.copy(sourcePath, destinationPath);
 
