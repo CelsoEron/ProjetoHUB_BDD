@@ -35,6 +35,7 @@ public class ProductPageSteps {
 	@Then("^verifica pesquisa$")
 	public void verifica_pesquisa() {
 		productPage.checkNotFound();
+		productPage.waitNotFound();
 	}
 
 }

@@ -37,6 +37,9 @@ public class ProductPage {
 
 	@FindBy(how = How.NAME, using = "save_to_cart")
 	private WebElement pageLoad;
+	
+	@FindBy(how = How.XPATH, using = "//*[@id=\"searchPage\"]/div[3]/div")
+	private WebElement pageLoadInvalid;
 
 	public void close_Search() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -65,6 +68,11 @@ public class ProductPage {
 	public void waitElement() {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.visibilityOf(pageLoad));
+	}
+	
+	public void waitNotFound() {
+		WebDriverWait wait = new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.visibilityOf(pageLoadInvalid));
 	}
 
 }
