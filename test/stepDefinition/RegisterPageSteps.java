@@ -17,39 +17,31 @@ public class RegisterPageSteps {
 	}
 
 	// Registro valido
-	@When("^User enters Account Details$")
-	public void user_enters_Account_Details() {
+	@When("^usuario insere os dados da conta$")
+	public void usuario_insere_os_dados_da_conta() {
 		registerPage.fill_AccountDetails();
 	}
 	
-	@And("^User enters Personal Details$")
-	public void user_enters_Personal_Details() {
+	@When("^usuario insere os dados pessoais$")
+	public void usuario_insere_os_dados_pessoais() {
 		registerPage.fillPersonalDetails();
 	}
 
-	@And("^User enters Address$")
-	public void user_enters_Address() {
+	@When("^usuario insere os dados de endereco$")
+	public void usuario_insere_os_dados_de_endereco() {
 		registerPage.fillAddress();
 	}
 
-	@And("^Click in agree terms and Register button$")
-	public void click_In_Agree_Terms_And_Register_Button() {
+	@Then("^usuario conclui o cadastro$")
+	public void usuario_conclui_o_cadastro() {
 		registerPage.clickAgree(true);
 		registerPage.clickBtnRegister(true);
-	}
-
-	@Then("^Message displayed Register Successfully$")
-	public void message_displayed_Register_Successfully() {
+		registerPage.rollDown();
 	}
 
 	// invalido
-	@When("^User enters invalid Account Details$")
-	public void user_enters_invalid_Account_Details() {
+	@When("^usuario insere os dados pessoais invalidos$")
+	public void usuario_insere_os_daods_pessoais_invalidos() {
 		registerPage.fill_InvalidAccountDetails();
-	}
-	
-	@Then("^Message displayed Register Failed$")
-	public void message_displayed_Register_Failed() {
-		registerPage.rollDown();
 	}
 }

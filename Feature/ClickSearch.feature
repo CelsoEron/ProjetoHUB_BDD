@@ -1,12 +1,13 @@
-Feature: Click Search Action
-
-  Scenario: Sucessful Search with Clicks
-    Given User is on Home Page
-    When User click in Product Category chosen
-    And User click in Product chosen
-    Then Message displayed Search with Clicks Successfully
-
-  Scenario: Failed Search with Clicks
-    Given User is on Home Page
-    When User click in Invalid Product chosen
-		Then Message displayed Product chosen is different
+#Feature: Pesquisa de produto
+    #Pesquisa por determinado produto por clicks na página
+#
+  #Background: 
+    #Given usuario na home page
+#
+  #Scenario: Pesquisa por click com sucesso
+    #When Clicar na categoria
+   #	Then escolher o produto
+#
+  #Scenario: Pesquisa por click com falha
+    #When usuario clica no produto
+#

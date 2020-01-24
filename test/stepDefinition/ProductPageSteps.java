@@ -3,7 +3,6 @@ package stepDefinition;
 import org.openqa.selenium.WebDriver;
 
 import cucumber.TestContext;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import managers.WebDriverManager;
@@ -21,40 +20,21 @@ public class ProductPageSteps {
 		productPage = testContext.getPageObjectManager().getProductPage();
 	}
 
-	@When("^User click in Product chosen$")
-	public void user_click_in_Product_chosen() {
+	@Then("^escolher o produto$")
+	public void escolher_o_produto() {
 		productPage.clickProduct();
 	}
 
-	@Then("^Message displayed Search with Clicks Successfully$")
-	public void message_displayed_Search_with_Clicks_Successfully() {
-	}
-
-	@When("^User click in Product chosen with Text$")
-	public void user_click_in_Product_chosen_with_Text() throws InterruptedException {
+	@When("^usuario escolhe produto$")
+	public void usuario_escolhe_produto() throws InterruptedException {
 		productPage.close_Search();
 		productPage.clickTxtProduct();
-	}
-
-	@And("^Check name of chosen Product$")
-	public void check_name_of_chosen_Product() {
 		productPage.checkTxtProduct();
 	}
 
-	@When("^Check error message$")
-	public void check_error_message() {
+	@Then("^verifica pesquisa$")
+	public void verifica_pesquisa() {
 		productPage.checkNotFound();
-	}
-
-	@Then("^Message displayed Product chosen is different$")
-	public void message_displayed_Product_chosen_is_different() {
-	}
-	@Then("^Message displayed Search with Text Box Successfully$")
-	public void message_displayed_Search_with_Text_Box_Successfully() {
-	}
-
-	@Then("^Message displayed Search with Text Box Failed$")
-	public void message_displayed_Search_with_Text_Box_Failed() {
 	}
 
 }

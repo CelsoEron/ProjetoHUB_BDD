@@ -1,14 +1,12 @@
-Feature: Text Box Search Action
+Feature: Pesquisa por texto
 
-  Scenario: Sucessful Search with Text Box
-    Given User is on Home Page
-    When User click and input valid Search
-    When User click in Product chosen with Text
-    And Check name of chosen Product
-    Then Message displayed Search with Text Box Successfully
+  Background: 
+    Given usuario na home page
 
-  Scenario: Failed Search with Text Box
-    Given User is on Home Page
-    When User click and input invalid Search
-    And Check error message
-    Then Message displayed Search with Text Box Failed
+  Scenario: Pesquisa com sucesso
+    When usuario pesquisa produto valido
+    When usuario escolhe produto
+
+  Scenario: Pesquisa com falha
+    When usuario pesquisa produto invalido
+    Then verifica pesquisa

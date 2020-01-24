@@ -22,36 +22,36 @@ public class HomePageSteps {
 		ExcelUtils.setProdutosFile(Constant.Path_TestData + Constant.File_TestData, "Produtos");
 	}
 
-	@Given("^User is on Home Page$")
-	public void user_is_on_Home_Page() {
+	@Given("^usuario na home page$")
+	public void usuario_na_home_page() {
 		home.enterHome();
 	}
 
-	@When("^User Navigate to Register Page$")
-	public void user_Navigate_to_Register_Page() {
+	@When("^usuario navega até a página de cadastro$")
+	public void usuario_navega_ate_a_pagina_de_cadastro() {
 		home.clickMenuUser();
 		home.clickCreateAccount();
 	}
 
-	@When("^User click in Product Category chosen$")
-	public void user_click_in_Product_Category_chosen() {
+	@When("^Clicar na categoria$")
+	public void Clicar_na_categoria() {
 		home.clickMiceCategory();
 	}
 
-	@When("^User click in Invalid Product chosen$")
-	public void user_click_in_Invalid_Product_chosen() throws InterruptedException {
+	@When("^usuario clica no produto$")
+	public void usuario_clica_no_produto() throws InterruptedException {
 		home.clickInvalidProduct();
 		home.waitElement();
 	}
 
-	@When("^User click and input valid Search$")
-	public void user_click_and_input_valid_Search() throws Exception {
+	@When("^usuario pesquisa produto valido$")
+	public void usuario_pesquisa_produto_valido() throws Exception {
 		home.clickBtnSearch();
 		home.fillBoxSearch();
 	}
 
-	@When("^User click and input invalid Search$")
-	public void user_click_and_input_invalid_Search() throws Exception {
+	@When("^usuario pesquisa produto invalido$")
+	public void usuario_pesquisa_produto_invalido() throws Exception {
 		home.clickBtnSearch();
 		home.fillBoxInvalidSearch();
 

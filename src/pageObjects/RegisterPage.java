@@ -58,6 +58,7 @@ public class RegisterPage {
 
 	@FindBy(how = How.ID, using = "register_btnundefined")
 	private WebElement btnRegister;
+	
 
 	public void enterUsername(String userName) {
 		bxUsername.sendKeys(userName);
@@ -124,7 +125,7 @@ public class RegisterPage {
 	}
 
 	public void fill_AccountDetails() {
-		enterUsername("Automation2");
+		enterUsername("Automation4");
 		enterEmail("celsoautomation@test.com");
 		enterPassword("Test1234");
 		enterConfirmPassword("Test1234");

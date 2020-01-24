@@ -35,6 +35,8 @@ public class ProductPage {
 	@FindBy(how = How.XPATH, using = "//*[@id=\"searchPage\"]/div[3]/div/label/span")
 	private WebElement messageNotFound;
 
+	@FindBy(how = How.NAME, using = "save_to_cart")
+	private WebElement pageLoad;
 
 	public void close_Search() throws InterruptedException {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -58,6 +60,11 @@ public class ProductPage {
 
 	public void checkNotFound() {
 		assertEquals(messageNotFound.getText().contains("No results for"), true);
+	}
+	
+	public void waitElement() {
+		WebDriverWait wait = new WebDriverWait(driver, 15);
+		wait.until(ExpectedConditions.visibilityOf(pageLoad));
 	}
 
 }
