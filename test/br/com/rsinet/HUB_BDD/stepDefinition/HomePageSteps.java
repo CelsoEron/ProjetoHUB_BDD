@@ -27,7 +27,7 @@ public class HomePageSteps {
 		home.enterHome();
 	}
 
-	@When("^usuario navega até a página de cadastro$")
+	@When("^usuario navega ate a pagina de cadastro$")
 	public void usuario_navega_ate_a_pagina_de_cadastro() {
 		home.clickMenuUser();
 		home.clickCreateAccount();

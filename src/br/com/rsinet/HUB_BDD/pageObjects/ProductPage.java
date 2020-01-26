@@ -37,7 +37,7 @@ public class ProductPage {
 
 	@FindBy(how = How.NAME, using = "save_to_cart")
 	private WebElement pageLoad;
-	
+
 	@FindBy(how = How.XPATH, using = "//*[@id=\"searchPage\"]/div[3]/div")
 	private WebElement pageLoadInvalid;
 
@@ -61,15 +61,19 @@ public class ProductPage {
 		assertEquals(lnkTxtProduct.getText().toString().toUpperCase(), description.getText());
 	}
 
+	public void checkClickProduct() {
+		assertEquals(lnkProduct.getText().toString().toUpperCase(), description.getText());
+	}
+
 	public void checkNotFound() {
 		assertEquals(messageNotFound.getText().contains("No results for"), true);
 	}
-	
+
 	public void waitElement() {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.visibilityOf(pageLoad));
 	}
-	
+
 	public void waitNotFound() {
 		WebDriverWait wait = new WebDriverWait(driver, 15);
 		wait.until(ExpectedConditions.visibilityOf(pageLoadInvalid));

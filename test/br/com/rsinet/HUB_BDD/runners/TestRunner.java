@@ -14,12 +14,8 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "Feature", glue = "stepDefinition", plugin = {
-		"com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html" }
-
-//		,dryRun = true
-		, monochrome = true)
-//		, tags = { "@InvalidClickSearch" })
+@CucumberOptions(features = "Feature", glue = { "br.com.rsinet.HUB_BDD.stepDefinition" }, plugin = {
+		"com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html" }, monochrome = true)
 
 public class TestRunner {
 

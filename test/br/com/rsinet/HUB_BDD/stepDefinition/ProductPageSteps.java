@@ -23,6 +23,7 @@ public class ProductPageSteps {
 	@Then("^escolher o produto$")
 	public void escolher_o_produto() {
 		productPage.clickProduct();
+		productPage.checkClickProduct();
 	}
 
 	@When("^usuario escolhe produto$")
