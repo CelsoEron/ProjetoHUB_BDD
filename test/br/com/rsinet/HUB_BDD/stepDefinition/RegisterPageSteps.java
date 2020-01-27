@@ -1,5 +1,7 @@
 package br.com.rsinet.HUB_BDD.stepDefinition;
 
+import com.cucumber.listener.Reporter;
+
 import br.com.rsinet.HUB_BDD.cucumber.TestContext;
 import br.com.rsinet.HUB_BDD.pageObjects.RegisterPage;
 import cucumber.api.java.en.And;
@@ -20,16 +22,22 @@ public class RegisterPageSteps {
 	@When("^usuario insere os dados da conta$")
 	public void usuario_insere_os_dados_da_conta() {
 		registerPage.fill_AccountDetails();
+		
+		Reporter.addStepLog("Preenche os campos da Conta");
 	}
 	
 	@When("^usuario insere os dados pessoais$")
 	public void usuario_insere_os_dados_pessoais() {
 		registerPage.fillPersonalDetails();
+		
+		Reporter.addStepLog("Preenche os campos Pessoais da Conta");
 	}
 
 	@When("^usuario insere os dados de endereco$")
 	public void usuario_insere_os_dados_de_endereco() {
 		registerPage.fillAddress();
+		
+		Reporter.addStepLog("Preenche os campos de endereço da Conta");
 	}
 
 	@Then("^usuario conclui o cadastro$")
@@ -37,11 +45,15 @@ public class RegisterPageSteps {
 		registerPage.clickAgree(true);
 		registerPage.clickBtnRegister(true);
 		registerPage.rollDown();
+		
+		Reporter.addStepLog("Aceita os termos e no botão de Registro");
 	}
 
 	// invalido
 	@When("^usuario insere os dados pessoais invalidos$")
 	public void usuario_insere_os_daods_pessoais_invalidos() {
 		registerPage.fill_InvalidAccountDetails();
+		
+		Reporter.addStepLog("Preenche os campos da Conta com dados inválidos");
 	}
 }

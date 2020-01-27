@@ -2,6 +2,8 @@ package br.com.rsinet.HUB_BDD.stepDefinition;
 
 import org.openqa.selenium.WebDriver;
 
+import com.cucumber.listener.Reporter;
+
 import br.com.rsinet.HUB_BDD.cucumber.TestContext;
 import br.com.rsinet.HUB_BDD.managers.WebDriverManager;
 import br.com.rsinet.HUB_BDD.pageObjects.ProductPage;
@@ -24,6 +26,7 @@ public class ProductPageSteps {
 	public void escolher_o_produto() {
 		productPage.clickProduct();
 		productPage.checkClickProduct();
+		Reporter.addStepLog("Clicar no produto da Home Page");
 	}
 
 	@When("^usuario escolhe produto$")
@@ -31,6 +34,8 @@ public class ProductPageSteps {
 		productPage.close_Search();
 		productPage.clickTxtProduct();
 		productPage.checkTxtProduct();
+		
+		Reporter.addStepLog("Fecha a caixa de pesquisa e clica no produto selecionado por texto");
 	}
 
 	@Then("^verifica pesquisa$")
