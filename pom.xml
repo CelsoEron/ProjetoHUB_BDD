@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>HUB_BDD</groupId>
-	<artifactId>ProjetoLoja</artifactId>
+	<artifactId>ProjetoBDD</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<name>ProjetoLoja</name>

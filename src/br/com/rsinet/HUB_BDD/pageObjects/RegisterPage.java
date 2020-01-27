@@ -125,7 +125,7 @@ public class RegisterPage {
 	}
 
 	public void fill_AccountDetails() {
-		enterUsername("Automation001");
+		enterUsername("Automation101");
 		enterEmail("celsoautomation@test.com");
 		enterPassword("Test1234");
 		enterConfirmPassword("Test1234");

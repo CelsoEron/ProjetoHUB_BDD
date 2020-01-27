@@ -19,7 +19,7 @@ import cucumber.api.junit.Cucumber;
 
 public class TestRunner {
 
-	public static String folderPath = System.getProperty("user.dir") + "/target/cucumber-reports/screenshots/"
+	public static String folderPath = System.getProperty("user.dir") + "/target/"
 			+ TimeDescription.horas();
 
 	@AfterClass
